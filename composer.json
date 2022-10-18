@@ -7,14 +7,21 @@
   "authors": [
     {
       "name": "Denis Tarasov",
-      "email": "brokeneye@mail.ru"
+      "email": "brokeneye@gmail.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:Ergnuor/ergnuordomainmodel.git"
     }
   ],
   "require": {
-    "php": ">=8.1"
+    "php": ">=8.1",
+    "ergnuor/domain-model": "^0.0.1"
   },
   "autoload": {
-    "psr-4": {"Ergnuor\\DomainModelBundle": "src/"}
+    "psr-4": {"Ergnuor\\DomainModelBundle\\": "src/"}
   },
   "config": {
     "sort-packages": true
