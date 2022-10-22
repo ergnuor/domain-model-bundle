@@ -1,8 +1,8 @@
 {
   "name": "ergnuor/domain-model-bundle",
+  "type": "symfony-bundle",
   "description": "",
   "keywords": ["domain", "model"],
-  "type": "library",
   "license": "MIT",
   "authors": [
     {
@@ -18,7 +18,10 @@
   ],
   "require": {
     "php": ">=8.1",
-    "ergnuor/domain-model": "^0.0.1"
+    "ergnuor/domain-model": "^0.0.1",
+    "symfony/config": "^6.0",
+    "symfony/dependency-injection": "^6.0",
+    "symfony/http-kernel": "^6.0"
   },
   "autoload": {
     "psr-4": {"Ergnuor\\DomainModelBundle\\": "src/"}
