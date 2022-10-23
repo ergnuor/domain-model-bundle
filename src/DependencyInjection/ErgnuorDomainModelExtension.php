@@ -19,5 +19,6 @@ class ErgnuorDomainModelExtension extends Extension
         );
 
         $loader->load('serializer.php');
+        $loader->load('entity_manager.php');
     }
 }

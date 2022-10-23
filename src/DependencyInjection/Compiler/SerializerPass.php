@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ergnuor\DomainModelBundle\DependencyInjection\Compiler;
 
+use Ergnuor\DomainModel\Serializer\Normalizer\DoctrineEntityObjectNormalizer\DoctrineEntityClassMetadataGetter;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Compiler\PriorityTaggedServiceTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -13,6 +14,7 @@ use Symfony\Component\DependencyInjection\Reference;
 class SerializerPass implements CompilerPassInterface
 {
     use PriorityTaggedServiceTrait;
+    use DoctrineEntityManagerListDependencyTrait;
 
     public function process(ContainerBuilder $container)
     {
@@ -54,15 +56,12 @@ class SerializerPass implements CompilerPassInterface
             return;
         }
 
-
-        $doctrineEntityClassMetadataGetter = $container->getDefinition('ergnuor.domain_model.serializer.common.normalizer.doctrine_entity.doctrine_entity_class_metadata_getter');
-        $entityManagersServices = [];
-
-        foreach ($container->getParameter('doctrine.entity_managers') as $entityManagerName => $entityManagerServiceId) {
-            $entityManagersServices[] = new Reference($entityManagerServiceId);
-        }
-
-        $doctrineEntityClassMetadataGetter->replaceArgument(0, $entityManagersServices);
+        $this->setDoctrineEntityManagersListDependency(
+            $container,
+            'ergnuor.domain_model.serializer.common.normalizer.doctrine_entity.doctrine_entity_class_metadata_getter',
+            0,
+            DoctrineEntityClassMetadataGetter::class,
+        );
     }
 
     private function setNormalizers(
