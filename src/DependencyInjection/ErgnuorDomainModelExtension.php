@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Ergnuor\DomainModelBundle\DependencyInjection;
 
+use Ergnuor\DomainModel\Persister\AggregateRootPersisterInterface;
+use Ergnuor\DomainModel\Persister\EntityPersisterInterface;
+use Ergnuor\DomainModel\Repository\DomainRepositoryInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -20,5 +23,14 @@ class ErgnuorDomainModelExtension extends Extension
 
         $loader->load('serializer.php');
         $loader->load('entity_manager.php');
+
+        $container->registerForAutoconfiguration(AggregateRootPersisterInterface::class)
+            ->addTag('ergnuor.domain_model.persister');
+        $container->registerForAutoconfiguration(EntityPersisterInterface::class)
+            ->addTag('ergnuor.domain_model.persister');
+
+        $container->registerForAutoconfiguration(DomainRepositoryInterface::class)
+            ->addTag('ergnuor.domain_model.repository');
+
     }
 }
