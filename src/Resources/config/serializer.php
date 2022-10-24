@@ -48,6 +48,7 @@ return static function (ContainerConfigurator $container) {
         ->set('ergnuor.domain_model.serializer.common.normalizer.doctrine_entity', DoctrineEntityObjectNormalizer::class)
             ->parent('ergnuor.domain_model.serializer.common.normalizer.base_object_normalizer')
             ->args([
+                [],
                 service('ergnuor.domain_model.serializer.common.normalizer.doctrine_entity.class_metadata_getter')
             ])
 
