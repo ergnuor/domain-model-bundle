@@ -13,7 +13,7 @@ class MetadataPass implements CompilerPassInterface
     {
         $classMetadataFactoryAdapterDefinition = $container->getDefinition('ergnuor.domain_model.mapping.class_metadata_factory_adapter');
         $classMetadataFactoryAdapterDefinition->replaceArgument(
-            1,
+            0,
             $container->getParameter('ergnuor.domain_model.entity_paths')
         );
     }
