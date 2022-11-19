@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Ergnuor\DomainModel\Serializer\JsonSerializer;
 use Ergnuor\DomainModel\Serializer\Normalizer\BaseObjectNormalizer;
 use Ergnuor\DomainModel\Serializer\Normalizer\CollectionNormalizer;
 use Ergnuor\DomainModel\Serializer\Normalizer\DateTimeNormalizer;
 use Ergnuor\DomainModel\Serializer\Normalizer\DoctrineEntityObjectNormalizer;
 use Ergnuor\DomainModel\Serializer\Normalizer\DoctrineEntityObjectNormalizer\DoctrineEntityClassMetadataGetter;
 use Ergnuor\DomainModel\Serializer\Normalizer\DomainEntityNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 return static function (ContainerConfigurator $container) {
 
     $container->services()
-        ->set('ergnuor.domain_model.serializer.domain_entity_serializer', JsonSerializer::class)
+        ->set('ergnuor.domain_model.serializer.domain_entity_serializer', Serializer::class)
             ->args([[], [service('serializer.encoder.json')]])
 
-        ->set('ergnuor.domain_model.serializer.table_data_gateway_dto_serializer', JsonSerializer::class)
+        ->set('ergnuor.domain_model.serializer.table_data_gateway_dto_serializer', Serializer::class)
             ->args([[], [service('serializer.encoder.json')]])
 
         // common normalizers
