@@ -37,6 +37,8 @@ return static function (ContainerConfigurator $container) {
                 service('ergnuor.domain_model.entity_manager'),
                 service('ergnuor.domain_model.serializer.domain_entity_serializer'),
                 service('ergnuor.domain_model.serializer.table_data_gateway_dto_serializer'),
+                service('ergnuor.domain_model.criteria.config_builder'),
+                tagged_locator('ergnuor.domain_model.criteria.expression_mapper_service'),
             ])
 
         ->alias(RegistryInterface::class, 'ergnuor.domain_model.registry')

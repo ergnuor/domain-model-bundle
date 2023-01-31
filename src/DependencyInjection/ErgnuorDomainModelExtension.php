@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ergnuor\DomainModelBundle\DependencyInjection;
 
+use Ergnuor\DomainModel\Criteria\FieldMapper\FieldExpressionMapperInterface;
 use Ergnuor\DomainModel\Persister\AggregateRootPersisterInterface;
 use Ergnuor\DomainModel\Persister\EntityPersisterInterface;
 use Ergnuor\DomainModel\Repository\DomainRepositoryInterface;
@@ -31,6 +32,7 @@ class ErgnuorDomainModelExtension extends Extension
             new FileLocator(\dirname(__DIR__) . '/Resources/config')
         );
 
+        $loader->load('common.php');
         $loader->load('serializer.php');
         $loader->load('entity_manager.php');
 
@@ -45,6 +47,8 @@ class ErgnuorDomainModelExtension extends Extension
         $container->registerForAutoconfiguration(DomainRepositoryInterface::class)
             ->addTag('ergnuor.domain_model.repository');
 
+        $container->registerForAutoconfiguration(FieldExpressionMapperInterface::class)
+            ->addTag('ergnuor.domain_model.criteria.expression_mapper_service');
     }
 
     private function defineMetadataServices(ContainerBuilder $container): void
