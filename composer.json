@@ -13,21 +13,39 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@bitbucket.org:Ergnuor/ergnuordomainmodel.git"
+      "url": "git@bitbucket.org:Ergnuor/ergnuor-domain-model.git"
     },
     {
       "type": "vcs",
-      "url": "git@bitbucket.org:Ergnuor/ergnuormapping.git"
+      "url": "git@bitbucket.org:Ergnuor/ergnuor-mapping.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:Ergnuor/ergnuor-criteria.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:Ergnuor/ergnuor-data-getter.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:Ergnuor/ergnuor-serializer.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:Ergnuor/ergnuor-serializer-bundle.git"
     }
   ],
   "require": {
     "php": ">=8.1",
+    "ergnuor/criteria-bundle": "^0.1.0",
     "ergnuor/domain-model": "^0.1.0",
-    "symfony/cache": "^6.0",
-    "symfony/config": "^6.0",
-    "symfony/dependency-injection": "^6.0",
-    "symfony/framework-bundle": "^6.0",
-    "symfony/http-kernel": "^6.0"
+    "ergnuor/serializer-bundle": "^0.1.0",
+    "symfony/cache": "^6.3",
+    "symfony/config": "^6.3",
+    "symfony/dependency-injection": "^6.3",
+    "symfony/framework-bundle": "^6.3",
+    "symfony/http-kernel": "^6.3"
   },
   "autoload": {
     "psr-4": {"Ergnuor\\DomainModelBundle\\": "src/"}
